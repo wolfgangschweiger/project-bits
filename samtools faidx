@@ -1,0 +1,21 @@
+# to extract fasta entries from a multifasta file
+
+# Building samtools:
+
+cd samtools-1.2
+make
+make prefix=/usr/bin/samtools-1.2 install
+
+# set path
+
+export PATH=/usr/bin/samtools-1.2/bin:$PATH
+
+# run in folder with data:
+# build index
+
+samtools faidx test.fa
+
+# extract sequences
+
+xargs samtools faidx test.fa < names.list > output.fa
+
