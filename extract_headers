@@ -1,0 +1,1 @@
+grep -e ">" file1 >out1.txt 
