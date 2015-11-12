@@ -1,0 +1,10 @@
+# -o returns only substring not line as default
+# .* = any character (.) x as often as possible (*)
+# until "0" but: At3G3300 --> At3G330
+
+grep -o "At.*0" text.txt > out.txt
+
+# . 8 times
+
+grep -o 'At.\{8\}' text.txt
+
