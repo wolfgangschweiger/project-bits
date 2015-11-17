@@ -1,0 +1,26 @@
+import sys
+
+current_file=sys.argv[1]
+names=sys.argv[2]
+
+fh=file(current_file)
+sq={}
+for line in fh.readlines():
+	line=line.strip()
+	if(line.find(">")!=-1):
+		cid=line[1:]
+		assert(sq.get(cid)==None)
+		sq[cid]=""
+	else:
+		sq[cid]=sq[cid]+line
+
+fh=file(names)
+uniq={}
+for line in fh.readlines():
+	line=line.strip()
+	for sq_ in sq:
+		if(sq_==line or line==sq_[0:len(line)]):
+			uniq[sq_]=sq[sq_]
+for uniq_ in uniq:
+	print ">"+uniq_
+	print uniq[uniq_]
