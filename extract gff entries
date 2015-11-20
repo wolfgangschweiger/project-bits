@@ -1,0 +1,14 @@
+#extracts gff entries from a gff starting with a query name for a given sequence and writes it to a file. multiple lines per query name are expected
+
+gff_data = open('barley_HighConf_genes_MIPS_30Jan14MorexContigIDs_Transcript_and_CDS_structure.gff').readlines()
+query = open('morex_contigs.list').readlines()
+f = open('output.txt','w')
+
+for line in gff_data:
+	for name in query:
+		if line.startswith(name):
+			f.write(line)
+
+
+
+
