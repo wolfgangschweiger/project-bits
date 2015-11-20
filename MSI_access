@@ -1,0 +1,15 @@
+#login to MSI
+
+ssh -Y <login_name>@login.msi.umn.edu
+
+#login to group cluster
+
+ssh mesabi
+
+#load samtools or anything else
+module load samtools
+
+# other commands used
+wget
+unzip
+less #cat with stop per page
