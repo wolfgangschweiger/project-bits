@@ -1,0 +1,1 @@
+awk '/>/{a++}END{print a}' morex_contigs_extracted.fa 
