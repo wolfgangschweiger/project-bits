@@ -1,14 +1,31 @@
-#extracts gff entries from a gff starting with a query name for a given sequence and writes it to a file. multiple lines per query name are expected
 
-gff_data = open('barley_HighConf_genes_MIPS_30Jan14MorexContigIDs_Transcript_and_CDS_structure.gff').readlines()
-query = open('morex_contigs.list').readlines()
-f = open('output.txt','w')
+#extracts lines from gtf file starting with any entry within a query list
+
+# gff_data example
+# morex_contig_1569752	mips	exon	1196	1720	.	+	.	gene_id "MLOC_15072"; transcript_id "MLOC_15072.3"; exon_number "5";
+# morex_contig_56152	mips	CDS	484	660	.	+	.	gene_id "MLOC_15072"; transcript_id "MLOC_15072.3"; coding_exon_number "2";
+# morex_contig_156911	mips	CDS	741	839	.	+	.	gene_id "MLOC_15072"; transcript_id "MLOC_15072.3"; coding_exon_number "3";
+# morex_contig_152222	mips	CDS	741	839	.	+	.	gene_id "MLOC_15072"; transcript_id "MLOC_15072.3"; coding_exon_number "3";
+
+
+# query example
+# morex_contig_1569752
+# morex_contig_1234354
+# morex_contig_152222
+
+
+gff_data = open('HC_LC_genes.gtf').readlines()
+query = open('morex_contigs.list')
+query = query.read().split()
+print(query)
+f = open('morex_contigs_extracted.gtf','a')
+
 
 for line in gff_data:
 	for name in query:
-		if line.startswith(name):
-			f.write(line)
+	 	if line.startswith(name):
+ 			f.write(line)
 
 
 
-
+# print(query)
