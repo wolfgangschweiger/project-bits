@@ -19,3 +19,5 @@ samtools faidx test.fa
 
 xargs samtools faidx test.fa < names.list > output.fa
 
+# merge any bam with same reference
+samtools merge merged.bam in.1.bam in.2.bam ...
