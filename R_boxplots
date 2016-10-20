@@ -1,0 +1,24 @@
+setwd("C:/Users/atwsc/Documents/projects/afla/Laccases/")
+install.packages("ggplot2")
+install.packages("tidyr")
+install.packages("dplyr")
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+
+data <- read.csv("Km_Laccases.csv", sep=";", header=T)
+head(data)
+
+
+data <- gather(data, "substrate")
+data <- filter(data, value > 0 )
+sapply(data, is.numeric)
+data$value <- as.integer(data$value)
+sapply(data, is.numeric)
+
+
+
+ggplot(data, aes(substrate, value)) +
+  geom_boxplot() +
+  coord_trans(y="log10") +
+  scale_y_log10(breaks = c(10, 100,1000,10000))
